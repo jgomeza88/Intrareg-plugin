@@ -1,0 +1,15 @@
+{
+  "name": "intrareg",
+  "description": "Plugins de Intrareg para la calificación registral.",
+  "owner": {
+    "name": "Intrareg",
+    "url": "https://intrareg.com"
+  },
+  "plugins": [
+    {
+      "name": "intrareg",
+      "source": "./plugins/intrareg",
+      "description": "Calificación registral con el Catálogo de defectos y la doctrina de la DG (conector de Intrareg) y la nota de calificación como borrador en Intrareg (o en Word)."
+    }
+  ]
+}

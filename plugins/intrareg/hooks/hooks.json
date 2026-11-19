@@ -1,0 +1,17 @@
+{
+  "description": "Guarda de los datos personales: nunca leer las claves del anonimizador y, antes de leer un documento sin anonimizar, preguntar al registrador.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Read|Grep|Glob|Bash|NotebookRead",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$(command -v python3 || command -v python || echo py)\" \"${CLAUDE_PLUGIN_ROOT}/hooks/guarda_datos.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

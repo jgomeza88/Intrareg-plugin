@@ -1,0 +1,19 @@
+{
+  "name": "intrareg",
+  "displayName": "Intrareg",
+  "version": "2.6.0",
+  "description": "Apoyo a la calificación registral con Intrareg: consulta el Catálogo de defectos y la doctrina de la Dirección General y ayuda a preparar borradores de nota, que se revisan y completan en Intrareg.",
+  "author": {
+    "name": "Intrareg",
+    "url": "https://intrareg.com"
+  },
+  "homepage": "https://intrareg.com/w/conector",
+  "privacyPolicyUrl": "https://intrareg.com/w/legal/privacidad",
+  "keywords": [
+    "registro de la propiedad",
+    "calificación registral",
+    "nota de calificación",
+    "DGSJFP",
+    "intrareg"
+  ]
+}
