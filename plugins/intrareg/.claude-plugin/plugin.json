@@ -9,11 +9,18 @@
   },
   "homepage": "https://intrareg.com/w/conector",
   "privacyPolicyUrl": "https://intrareg.com/w/legal/privacidad",
+  "license": "LicenseRef-Intrareg",
+  "repository": "https://github.com/jgomeza88/intrareg-plugin",
   "keywords": [
     "registro de la propiedad",
     "calificación registral",
     "nota de calificación",
     "DGSJFP",
     "intrareg"
-  ]
+  ],
+  "network": {
+    "hosts": [
+      "intrareg.com"
+    ]
+  }
 }

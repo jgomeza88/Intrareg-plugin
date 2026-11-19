@@ -22,6 +22,7 @@ guarda de los datos, la lectura de sus modelos y las plantillas de Word con su p
 | `/intrareg:revisar-nota <nota>` | Revisa una nota contra el Catálogo y la estadística de la DG: riesgo de revocación de cada defecto, fundamentos y citas. |
 | `/intrareg:defectos <documento>` | Solo la lista de posibles defectos, con su riesgo ante la DG. |
 | `/intrareg:informe-recurso [recurso]` | Informe del registrador en defensa de la nota (art. 327 LH): doctrina a favor y en contra de cada defecto y el informe en Word. |
+| `/intrareg:herencia`, `/intrareg:inmatriculacion`, `/intrareg:exceso-cabida` | Calificación de esos negocios: los candidatos del Catálogo para ese negocio, lo que hay que repasar y el riesgo de cada defecto ante la DG; en la inmatriculación y el exceso de cabida, también la calificación gráfica. |
 | `/intrareg:novedades [periodo, materia]` | ¿Qué hay nuevo? Resoluciones de la DG, sentencias, consultas, aranceles y legislación de un periodo, por materia. |
 | `/intrareg:plazos <presentación> [notificación]` | Plazos del asiento en días hábiles: calificación, caducidad, prórroga, sustitutoria y recurso. |
 | `/intrareg:minuta <operación y valor>` | Minuta orientativa con la calculadora de aranceles de Intrareg. |
@@ -33,7 +34,7 @@ guarda de los datos, la lectura de sus modelos y las plantillas de Word con su p
 | Conector | `.mcp.json`: el servidor MCP de Intrareg (HTTP, OAuth). Sin claves en el fichero. |
 | Guarda de los datos | `hooks/`: Claude no puede leer, buscar ni copiar el fichero de claves del anonimizador (`*.claves.json`), y antes de abrir un PDF o un Word que no tiene al lado su versión anonimizada le pide confirmación. No depende de que Claude siga las instrucciones. |
 | Segundo registrador | `agents/segundo-registrador.md`: la última revisión de la calificación la hace un agente aparte, que solo ve el documento anonimizado y los defectos propuestos, no el razonamiento previo; descarta lo que el documento no prueba o la DG revoca. |
-| Casos de evaluación | `evals/` (no va en el zip): los casos de la DG con documentos inventados y unos de comportamiento, para medir el plugin con `claude plugin eval` antes de cada versión (cuesta suscripción o API). Se rehacen con `herramientas/evals_plugin.py`. |
+| Casos de evaluación | `evals/` (no va en el plugin que se instala): los casos de la DG con documentos inventados y unos de comportamiento, para medir el plugin con `claude plugin eval` antes de cada versión (cuesta suscripción o API). Se rehacen con `herramientas/evals_plugin.py`. |
 
 Todo son skills (`skills/<nombre>/SKILL.md`, el formato vigente de los plugins de Claude; ya no hay carpeta `commands/`): cada
 orden es la skill del mismo nombre, que se lanza con `/intrareg:<nombre>` y, si se escribe algo detrás, lo recibe como
@@ -102,23 +103,28 @@ conector (sin el plugin).
 Hace falta una cuenta de Intrareg de **registrador verificado**. La primera vez, Claude pide **iniciar sesión en Intrareg** para
 autorizar el acceso de solo lectura del conector.
 
+Se instala desde su repositorio público, `jgomeza88/intrareg-plugin`, sin descargar nada de Intrareg.
+
 ### Cowork (aplicación de escritorio de Claude)
-1. Descargue el plugin desde Intrareg (Mi cuenta › ✦ IA › Intrareg en su asistente de IA › Claude, o la página del conector) en un
-   fichero `.zip`.
-2. En Claude: Personalizar › Plugins › Añadir › Subir plugin, y elija el `.zip`.
+1. Personalizar › Plugins › Añadir marketplace, y escriba `jgomeza88/intrareg-plugin`.
+2. Instale «Intrareg» de ese marketplace.
 3. En el plugin, pestaña Conectores: «Conectar» en Intrareg, entre con su cuenta y permita el acceso de solo lectura.
 4. En una tarea de Cowork con acceso a la carpeta de sus documentos: `/intrareg:calificar escritura.pdf`.
 
 ### Claude Code
-- Desde el repositorio de Intrareg (marketplace):
-  ```
-  /plugin marketplace add <ruta o repositorio de Intrareg>
-  /plugin install intrareg@intrareg
-  ```
-- Desde un repositorio público del plugin (si se publica; lo prepara `herramientas/publicar_plugin.py`), se pone al día solo:
-  `/plugin marketplace add <usuario>/<repositorio>` y `/plugin install intrareg@intrareg`.
-- O desde el `.zip` descargado: descomprímalo y `claude --plugin-dir <carpeta>` para probarlo, o añada la carpeta como marketplace local.
-- Después, `/mcp` › intrareg › Autenticar, y entre con su cuenta de Intrareg.
+```
+/plugin marketplace add jgomeza88/intrareg-plugin
+/plugin install intrareg@intrareg
+```
+Para que se ponga al día solo: `/plugin` › Marketplaces › intrareg › Enable auto-update. Después, `/mcp` › intrareg › Autenticar, y
+entre con su cuenta de Intrareg.
+
+### Qué ejecuta en su equipo y qué envía
+- Solo se conecta a `https://intrareg.com` (el conector, con OAuth) y, si usted lo pide, Claude abre intrareg.com en su navegador.
+- La guarda de los datos (`hooks/guarda_datos.py`) se ejecuta con Python antes de cada lectura de ficheros: no envía nada; solo
+  bloquea el fichero de claves del anonimizador y pide confirmación antes de leer un documento sin anonimizar.
+- Los scripts (`anonimizar.py`, `anonimizar_documento.py`, `leer_carpeta.py`, `rellenar_nota.py`, `informe_docx.py`) trabajan con
+  ficheros de su equipo y no se conectan a nada (para leer un PDF, `anonimizar_documento.py` usa `pdftotext` si está instalado).
 
 ## Lo que trae el conector (y lo que no)
 
