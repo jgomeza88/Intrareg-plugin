@@ -9,12 +9,12 @@ argument-hint: "[qué: modelos, un modelo, en trámite o un asunto] [carpeta del
 Lo que pide: $ARGUMENTS
 
 Intrareg guarda los modelos propios y los asuntos en trámite en el navegador de cada uno y, si el registrador lo ha activado (Intrareg ›
-Mis modelos › «💾 También en mi ordenador», o Oficina › En trámite › «💾 En mi ordenador»), una copia al día en la **misma carpeta del
+Mis modelos › «💾 También en mi ordenador», o Calificación (Oficina) › En trámite › «💾 En mi ordenador»), una copia al día en la **misma carpeta del
 Registro que usa Calificación**, en la subcarpeta `Intrareg/u<cuenta>/` (modelos.json y en_tramite/). Nada de esto está en el servidor:
 el conector no lo ve (`mis_modelos` y `en_tramite` solo devuelven el enlace).
 
 Solo donde puedas ejecutar programas en el equipo con acceso a esa carpeta (Cowork con la carpeta conectada, Claude Code). En el chat de
-claude.ai no: allí, que abra Intrareg (Mis modelos u Oficina › En trámite).
+claude.ai no: allí, que abra Intrareg (Mis modelos o Calificación (Oficina) › En trámite).
 
 1. Pregunte, si no lo ha dicho, dónde está la carpeta del Registro (la que eligió en Calificación › ⚙ › «📁 Carpetas compartidas»), o
    el fichero que exportó (Mis modelos.json, un .calificar.json o el ZIP de En trámite) si su navegador no puede usar carpetas.

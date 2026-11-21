@@ -5,7 +5,7 @@ carpetas. Nada pasa por el servidor de Intrareg ni sale del equipo. Solo bibliot
 Dónde busca (la ruta que se le da puede ser cualquiera de estas):
   <carpeta del Registro>/Intrareg/u<cuenta>/{cuenta.json, modelos.json, en_tramite/<id>.json}   (la copia al día del navegador)
   «Mis modelos.json»                       (⬇ Exportar mis modelos)
-  «<asiento>.calificar.json» o «Trabajos <fecha>.zip»   (Oficina › En trámite › ⬇ Exportar)
+  «<asiento>.calificar.json» o «Trabajos <fecha>.zip»   (Calificación (Oficina) › En trámite › ⬇ Exportar)
 
 Uso:
   python leer_carpeta.py <ruta>                       resumen: cuentas, modelos y asuntos

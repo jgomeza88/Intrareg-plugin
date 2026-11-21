@@ -1,7 +1,7 @@
 {
   "name": "intrareg",
   "displayName": "Intrareg",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "description": "Apoyo a la calificación registral con Intrareg: consulta el Catálogo de defectos y la doctrina de la Dirección General y ayuda a preparar borradores de nota, que se revisan y completan en Intrareg.",
   "author": {
     "name": "Intrareg",

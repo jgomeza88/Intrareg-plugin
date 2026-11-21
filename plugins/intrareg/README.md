@@ -60,7 +60,7 @@ Escriba **«hola»** (o «menú», o `/intrareg:empezar`) y Claude contesta con 
 Conteste con el número. A partir de ahí es una conversación normal, como con un oficial del Registro: primero se habla de lo
 presentado y de las cuestiones dudosas, se repasan los defectos del Catálogo y la doctrina de la DG, y Claude le entrega el
 **documento de defectos** (cada defecto con su código y enlace a la ficha en Intrareg). Solo al final, si quiere la nota, se pasa a
-los datos: mejor rellenarlos en Intrareg (Oficina › Nuevo); si no, anonimizados o entre corchetes. «menú» vuelve al menú.
+los datos: mejor rellenarlos en Intrareg (Calificación (Oficina) › Nuevo); si no, anonimizados o entre corchetes. «menú» vuelve al menú.
 
 Ejemplo:
 
@@ -151,7 +151,7 @@ entre con su cuenta de Intrareg.
   exposición en el seguimiento del alumno. Hace falta marcar «Permitir también escribir» al conectar (con el doble factor) y
   confirmar cada envío o guardado.
 - **Sus modelos y lo que tiene en trámite** no están en el servidor: viven en su navegador y, si lo activa (Intrareg › Mis modelos ›
-  «💾 También en mi ordenador», o Oficina › En trámite › «💾 En mi ordenador»), en una copia al día dentro de **la misma carpeta del
+  «💾 También en mi ordenador», o Calificación (Oficina) › En trámite › «💾 En mi ordenador»), en una copia al día dentro de **la misma carpeta del
   Registro que usa Calificación** (la elegida en Calificación › ⚙ › «📁 Carpetas compartidas»), en `Intrareg/u<cuenta>/`:
   `modelos.json` y `en_tramite/<id>.json` (número, estado y defectos; los datos y la nota solo si activa «con los datos»). La skill
   `mis-modelos` los lee de esa carpeta en su equipo (Cowork con la carpeta conectada, o Claude Code); sin carpeta (Firefox, Safari,
